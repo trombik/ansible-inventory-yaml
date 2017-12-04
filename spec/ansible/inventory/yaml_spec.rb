@@ -64,9 +64,9 @@ RSpec.describe Ansible::Inventory::YAML do
 
   describe ".all_groups" do
     it "returns all groups" do
-      expect(i.all_groups.sort).to eq %w(
+      expect(i.all_groups.sort).to eq %w[
         group1 group2 group3 group4 group5 group6
-      ).sort
+      ].sort
     end
   end
 
@@ -88,25 +88,25 @@ RSpec.describe Ansible::Inventory::YAML do
     end
 
     it "returns group5" do
-      expect(i.all_hosts_in("group5").sort).to eq %w(foo bar).sort
+      expect(i.all_hosts_in("group5").sort).to eq %w[foo bar].sort
     end
 
     it "returns group6" do
-      expect(i.all_hosts_in("group6").sort).to eq %w(foo bar).sort
+      expect(i.all_hosts_in("group6").sort).to eq %w[foo bar].sort
     end
   end
 
   describe ".host" do
     it "returns host hash of foo" do
-      expect(i.host("foo")).to include({ "ansible_host" => "192.168.1.100" })
+      expect(i.host("foo")).to include("ansible_host" => "192.168.1.100")
     end
 
     it "returns host hash of bar" do
-      expect(i.host("bar")).to include({ "ansible_host" => "192.168.1.101" })
+      expect(i.host("bar")).to include("ansible_host" => "192.168.1.101")
     end
 
     it "returns host hash of buz" do
-      expect(i.host("buz")).to include({ "ansible_host" => "192.168.1.102" })
+      expect(i.host("buz")).to include("ansible_host" => "192.168.1.102")
     end
   end
 end

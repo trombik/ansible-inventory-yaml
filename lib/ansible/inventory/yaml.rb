@@ -62,7 +62,7 @@ module Ansible
       #
       # @return [Array] array of all groups in String
       def all_groups
-        config.keys.select { |k| k != "all" }
+        config.keys.reject { |k| k == "all" }
       end
 
       # Returns a host configuration in `all`
@@ -90,7 +90,7 @@ module Ansible
         end
         hosts = hosts_of(group).keys
         children = children_of(group)
-        children.keys.each do |child|
+        children.each_key do |child|
           raise "cannot find group `#{child}`" unless config.key?(child)
           hosts += all_hosts_in(child)
         end
